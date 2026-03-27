@@ -1,1 +1,15 @@
-# Analysis_example
+# Motoneuron activity propagation along the leech nerve cord
+## Objective
+During animal locomotion, rhythmic movements across different body regions are controlled by local circuits in the nerve cord, known as central pattern generators or CPGs. For smooth movement, the activation of these CPGs must be properly coordinated. This coordination can be achieved through signals from the cephalic region, the periphery or the nerve cord itself. Our aim is to analyze the contribution of local interactions among CPGs to motor coordination.
+
+## Background
+We addressed this question using the leech Hirudo verbana, a segmented animal. On solid substrates, leeches exhibit a locomotor behavior known as crawling, in which sequential waves of elongation and contraction propagate through the body segments in an anteroposterior direction. Each segment of the leech body is innervated by a single ganglion of the nerve cord, and each one of them contains a crawling CPG. Experimentally, crawling can be induced in an isolated ganglion by applying dopamine (DA) and monitored through extracellular recordings from the dorsal posterior (DP) nerve. In these recordings, the largest spikes correspond to motoneuron DE-3, which is active during the contraction phase.
+In previous work, we showed that dopamine elicited coordinated crawling in an isolated three ganglion chain. In this preparation, circuits in each ganglion interacted conforming a global network (Kearney et al.,2022). So now, our goal is to characterize these intersegmental coordinating signals.
+
+## Methods
+In this study we isolated chains of three ganglia and stimulated them with DA in three different configurations: DA applied to all three ganglia (global-DA) or DA applied only to the anterior, middle or the posterior ganglion of the chain, leaving the other two ganglia untreated. Crawling was monitored in each ganglion via extracellular recordings of an identified motoneuron (DE-3), which controls segmental contraction. Coordination across the three ganglia was assessed using cross-correlation index (CCI) and anteroposterior phase lag (lag/period).
+
+## Analysis example
+The analysis script provided loads a representative example of an experiment where DA was applied only to the middle ganglion of the chain. The dictionary arr_dict_25120801 contains extracellular recordings from the DP nerve from the anterior (1), middle (2) and posterior (3) ganglia. Distint units were identified in these nerves using the scipy.signal function find_peaks. Units 1-5, 6-8 and 11-15 in spike_idx_dict_25120801 correspond to the DP nerves 1, 2 and 3, respectively. DE-3 motoneurons correspond to the units 1, 6 and 11. Spike frequency was determined in 0.25 s bins and smoothed with a Gaussian filter (sigma=0.75 s). Spike frequency traces were segmented into cycles, defined between the ends of consecutive bursts in the stimulated ganglion (99% of each burst). Coordination between adjacent ganglia was assessed by cross-correlating DE-3 firing frequency series (windows of three cycles, shifted by one cycle) between adjacent pairs of ganglia (A–M and M–P). For each window, the maximum cross-correlation value and its phase lag were computed
+
+
